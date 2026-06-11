@@ -9,6 +9,7 @@
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Agent%20Skills-d97757?logo=anthropic&logoColor=white)](https://claude.com/claude-code)
 [![Skills](https://img.shields.io/badge/skills-1-blue)](#-skills-dispon%C3%ADveis)
 [![Status](https://img.shields.io/badge/reposit%C3%B3rio-vivo-success)](#-skills-dispon%C3%ADveis)
+[![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-lightgrey)](LICENSE)
 
 </div>
 
