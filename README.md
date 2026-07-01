@@ -7,7 +7,7 @@
 **Agent Skills para Claude Code — forjadas para builders.**
 
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Agent%20Skills-d97757?logo=anthropic&logoColor=white)](https://claude.com/claude-code)
-[![Skills](https://img.shields.io/badge/skills-1-blue)](#-skills-dispon%C3%ADveis)
+[![Skills](https://img.shields.io/badge/skills-5-blue)](#-skills-dispon%C3%ADveis)
 [![Status](https://img.shields.io/badge/reposit%C3%B3rio-vivo-success)](#-skills-dispon%C3%ADveis)
 [![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-lightgrey)](LICENSE)
 
@@ -19,9 +19,17 @@ Skills que eu uso e desenvolvo para fazer agentes de IA executarem métodos reai
 
 ## 📦 Skills disponíveis
 
-| Skill | O que faz |
-|---|---|
-| [⚒️ `/forge-atelier`](skills/forge-atelier/) | Forja uma skill de alta performance a partir do método de um especialista — extração em espiral, multi-sessão, que transforma expertise tácita em uma skill que a IA executa no nível dele (ou acima). |
+A **forge-atelier** é uma **constelação**: um orquestrador auto-invocável mais componentes explicit-only que ele lê e aplica por caminho. Todas as peças vivem lado a lado em [`skills/`](skills/) (co-location) para que as referências entre elas resolvam.
+
+| Skill | Papel | Invocação |
+|---|---|---|
+| [⚒️ `/forge-atelier`](skills/forge-atelier/) | Orquestrador — dono do chart, roda os Movimentos I+II, Construtor inline. Forja uma skill a partir do método de um especialista. | **auto-invocável** (a única) |
+| [`/forge-desmonte`](skills/forge-desmonte/) | Movimento I — desconstrução funcional do método em partes, funções e dependências reais. | explicit-only |
+| [`/forge-grill`](skills/forge-grill/) | Movimento I — interrogatório uma-pergunta-por-vez que puxa o método tácito; também grelha planos solo. | explicit-only |
+| [`/forge-otimizador`](skills/forge-otimizador/) | Movimento III — auto-otimização estilo Karpathy contra o harness (caro; nunca dispara sozinho). | explicit-only |
+| [`/forge-handoff`](skills/forge-handoff/) | Handoff entre sessões e roteador de falhas de uso real de volta à forja. | explicit-only |
+
+Fontes únicos referenciados (nunca copiados): [`skills/_shared/`](skills/_shared/). Manifesto de co-location: [`skills/ATELIER-MAP.md`](skills/ATELIER-MAP.md). Design: [`skills/docs/architecture-blueprint.md`](skills/docs/architecture-blueprint.md).
 
 *Mais skills a caminho — este repositório é vivo.*
 
@@ -33,14 +41,15 @@ Via [skills.sh](https://skills.sh):
 npx skills@latest add leonardomensitieri/skills
 ```
 
-Ou manualmente — copie a skill desejada para o seu diretório de skills:
+Ou manualmente — a constelação é **um só bloco de instalação**: copie todas as peças juntas (co-location) para o seu diretório de skills, senão as referências entre elas quebram:
 
 ```bash
 # global (todas as sessões)
-cp -r skills/forge-atelier ~/.claude/skills/
+cp -r skills/forge-atelier skills/forge-desmonte skills/forge-grill \
+      skills/forge-otimizador skills/forge-handoff \
+      skills/_shared skills/ATELIER-MAP.md ~/.claude/skills/
 
-# ou por projeto
-cp -r skills/forge-atelier .claude/skills/
+# ou por projeto: troque ~/.claude/skills/ por .claude/skills/
 ```
 
 E invoque na sessão:
@@ -76,7 +85,7 @@ Não é um gerador de prompt. É uma **extração deliberada, em espiral, multi-
 O Movimento II não entrega um produto final — entrega um **protótipo**. O uso real expõe onde o método ainda era tácito (ou simplesmente errado), e cada falha vira um novo gap que **reabre a espiral** naquele ponto. *"Pronto" é sempre provisório.*
 
 > [!NOTE]
-> A `forge-atelier` é o **ponto de entrada de uma constelação** de skills cooperantes (`forge-desmonte`, `forge-grill`, `forge-otimizador`, `forge-handoff` e `_shared/`). Este repositório publica **somente o orquestrador**. Ele foi desenhado para falhar de forma explícita — nunca silenciosa — quando uma peça da constelação não está instalada, e te avisa qual falta.
+> A `forge-atelier` é o **ponto de entrada de uma constelação** de skills cooperantes (`forge-desmonte`, `forge-grill`, `forge-otimizador`, `forge-handoff` e `_shared/`). Este repositório publica a **constelação completa** — todas co-localizadas em [`skills/`](skills/) para que as referências entre elas resolvam. Instale a pasta inteira junto; se uma peça faltar, a forja falha de forma explícita — nunca silenciosa — e te avisa qual.
 
 ## 🧭 Quando usar (e quando não)
 
