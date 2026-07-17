@@ -6,10 +6,10 @@
 
 **Agent Skills para Claude Code — forjadas para builders.**
 
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-Agent%20Skills-d97757?logo=anthropic&logoColor=white)](https://claude.com/claude-code)
-[![Skills](https://img.shields.io/badge/skills-5-blue)](#-skills-dispon%C3%ADveis)
-[![Status](https://img.shields.io/badge/reposit%C3%B3rio-vivo-success)](#-skills-dispon%C3%ADveis)
-[![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-lightgrey)](LICENSE)
+![Claude Code](https://img.shields.io/badge/Claude%20Code-Agent%20Skills-d97757?logo=anthropic&logoColor=white)
+![Skills](https://img.shields.io/badge/skills-5-blue)
+![Status](https://img.shields.io/badge/reposit%C3%B3rio-vivo-success)
+![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-lightgrey)
 
 </div>
 
@@ -23,13 +23,13 @@ A **forge-atelier** é uma **constelação**: um orquestrador auto-invocável ma
 
 | Skill | Papel | Invocação |
 |---|---|---|
-| [⚒️ `/forge-atelier`](skills/forge-atelier/) | Orquestrador — dono do chart, roda os Movimentos I+II, Construtor inline. Forja uma skill a partir do método de um especialista. | **auto-invocável** (a única) |
-| [`/forge-desmonte`](skills/forge-desmonte/) | Movimento I — desconstrução funcional do método em partes, funções e dependências reais. | explicit-only |
-| [`/forge-grill`](skills/forge-grill/) | Movimento I — interrogatório uma-pergunta-por-vez que puxa o método tácito; também grelha planos solo. | explicit-only |
-| [`/forge-otimizador`](skills/forge-otimizador/) | Movimento III — auto-otimização estilo Karpathy contra o harness (caro; nunca dispara sozinho). | explicit-only |
-| [`/forge-handoff`](skills/forge-handoff/) | Handoff entre sessões e roteador de falhas de uso real de volta à forja. | explicit-only |
+| [⚒️ `/forge-atelier`](skills/in-progress/forge-atelier/) | Orquestrador — dono do chart, roda os Movimentos I+II, Construtor inline. Forja uma skill a partir do método de um especialista. | **auto-invocável** (a única) |
+| [`/forge-desmonte`](skills/in-progress/forge-desmonte/) | Movimento I — desconstrução funcional do método em partes, funções e dependências reais. | explicit-only |
+| [`/forge-grill`](skills/in-progress/forge-grill/) | Movimento I — interrogatório uma-pergunta-por-vez que puxa o método tácito; também grelha planos solo. | explicit-only |
+| [`/forge-otimizador`](skills/in-progress/forge-otimizador/) | Movimento III — auto-otimização estilo Karpathy contra o harness (caro; nunca dispara sozinho). | explicit-only |
+| [`/forge-handoff`](skills/in-progress/forge-handoff/) | Handoff entre sessões e roteador de falhas de uso real de volta à forja. | explicit-only |
 
-Fontes únicos referenciados (nunca copiados): [`skills/_shared/`](skills/_shared/). Manifesto de co-location: [`skills/ATELIER-MAP.md`](skills/ATELIER-MAP.md). Design: [`skills/docs/architecture-blueprint.md`](skills/docs/architecture-blueprint.md).
+Fontes únicos referenciados (nunca copiados): [`skills/in-progress/_shared/`](skills/in-progress/_shared/). Manifesto de co-location: [`skills/in-progress/ATELIER-MAP.md`](skills/in-progress/ATELIER-MAP.md). Design: [`skills/in-progress/docs/architecture-blueprint.md`](skills/in-progress/docs/architecture-blueprint.md).
 
 *Mais skills a caminho — este repositório é vivo.*
 
@@ -45,9 +45,9 @@ Ou manualmente — a constelação é **um só bloco de instalação**: copie to
 
 ```bash
 # global (todas as sessões)
-cp -r skills/forge-atelier skills/forge-desmonte skills/forge-grill \
-      skills/forge-otimizador skills/forge-handoff \
-      skills/_shared skills/ATELIER-MAP.md ~/.claude/skills/
+cp -r skills/in-progress/forge-atelier skills/in-progress/forge-desmonte skills/in-progress/forge-grill \
+      skills/in-progress/forge-otimizador skills/in-progress/forge-handoff \
+      skills/in-progress/_shared skills/in-progress/ATELIER-MAP.md ~/.claude/skills/
 
 # ou por projeto: troque ~/.claude/skills/ por .claude/skills/
 ```
