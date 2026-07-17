@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# SessionStart: expõe a pasta de auto-memory do projeto como ./memory e a ignora no git.
-# Contrato: sem stdout (SessionStart injeta stdout no contexto) e nunca bloqueia a sessão.
+# SessionStart: exposes the project's auto-memory folder as ./memory and git-ignores it.
+# Contract: no stdout (SessionStart injects stdout into context) and never blocks the session.
 set -uo pipefail
 
 input="$(cat)"
@@ -10,19 +10,19 @@ transcript="$(printf '%s' "$input" | jq -r '.transcript_path // empty')"
 cwd="$(printf '%s' "$input" | jq -r '.cwd // empty')"
 [ -n "$transcript" ] && [ -n "$cwd" ] || exit 0
 
-# pasta canônica de auto-memory = irmã do arquivo de transcript
+# canonical auto-memory folder = sibling of the transcript file
 memdir="$(dirname "$transcript")/memory"
 mkdir -p "$memdir" 2>/dev/null || true
 
-# symlink ./memory na raiz do projeto — nunca sobrescreve uma pasta 'memory' real
+# symlink ./memory at the project root — never clobber a real 'memory' folder
 link="$cwd/memory"
 if [ ! -e "$link" ] || [ -L "$link" ]; then
   ln -snf "$memdir" "$link" 2>/dev/null || true
 fi
 
-# se for repo git, ignora o symlink localmente (nunca commitar/publicar)
+# in a git repo, ignore the symlink locally (never commit/publish it)
 if gitdir="$(git -C "$cwd" rev-parse --absolute-git-dir 2>/dev/null)"; then
-  prefix="$(git -C "$cwd" rev-parse --show-prefix 2>/dev/null || true)"  # "" na raiz, "sub/" em subpasta
+  prefix="$(git -C "$cwd" rev-parse --show-prefix 2>/dev/null || true)"  # "" at root, "sub/" in a subfolder
   line="/${prefix}memory"
   exclude="$gitdir/info/exclude"
   grep -qxF "$line" "$exclude" 2>/dev/null || printf '%s\n' "$line" >> "$exclude"

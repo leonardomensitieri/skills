@@ -1,12 +1,12 @@
-## Memória — protocolo obrigatório
-Antes de gravar/editar/apagar QUALQUER memória: (1) mostrar a prévia e esperar
-minha pré-aprovação; (2) grill rápido, uma pergunta por vez, pra eliminar dado
-errado/impreciso/ambíguo e garantir que a memória carregue contexto e requisitos
-suficientes pra ser retomada na hora certa sem induzir a decisão errada;
-(3) construir de forma progressiva — capturar e refinar em incrementos, à medida
-que cada ponto se resolve, nunca deixar pra escrever tudo de uma vez no fim
-(senão a gente perde peça no caminho). Nunca gravar em silêncio.
+## Memory — required protocol
+Before writing/editing/deleting ANY memory: (1) show the preview and wait for my
+pre-approval; (2) a quick grill, one question at a time, to eliminate wrong,
+imprecise, or ambiguous data and ensure the memory carries enough context and
+requirements to be resumed at the right moment without leading to a wrong
+decision; (3) build progressively — capture and refine in increments as each
+point resolves, never leaving it all to write at the end (or we lose pieces
+along the way). Never save silently.
 
-## Ambiente
-`./memory` na raiz é um symlink pra pasta de auto-memory do projeto — criado
-automaticamente por hook SessionStart e ignorado via `.git/info/exclude`.
+## Environment
+`./memory` at the root is a symlink to the project's auto-memory folder — created
+automatically by a SessionStart hook and ignored via `.git/info/exclude`.

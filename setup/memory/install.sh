@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # setup/memory/install.sh
-# Instala o módulo "memory" no ~/.claude do usuário: hook de symlink + protocolo de memória.
-# Idempotente e não-destrutivo — seguro rodar várias vezes.
+# Installs the "memory" module into the user's ~/.claude: symlink hook + memory protocol.
+# Idempotent and non-destructive — safe to run multiple times.
 set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -14,22 +14,22 @@ HOOK_DST="$HOOKS_DIR/project-memory-symlink.sh"
 
 say() { printf '  %s\n' "$*"; }
 
-echo "▶ setup/memory — hook de auto-memory + protocolo"
+echo "-> setup/memory — auto-memory hook + protocol"
 
-# 0) pré-requisito: jq (necessário pra editar o settings.json com segurança)
+# 0) prerequisite: jq (needed to edit settings.json safely)
 if ! command -v jq >/dev/null 2>&1; then
-  echo "✗ 'jq' não encontrado — necessário. Instale e rode de novo:"
-  echo "    macOS: brew install jq    ·    Debian/Ubuntu: sudo apt install jq"
+  echo "x 'jq' not found — required. Install it and re-run:"
+  echo "    macOS: brew install jq    |    Debian/Ubuntu: sudo apt install jq"
   exit 1
 fi
 
-# 1) copia o hook
+# 1) copy the hook
 mkdir -p "$HOOKS_DIR"
 cp "$HOOK_SRC" "$HOOK_DST"
 chmod +x "$HOOK_DST"
-say "hook → $HOOK_DST"
+say "hook -> $HOOK_DST"
 
-# 2) registra no settings.json — cria se não existir, não duplica, não clobber outros hooks
+# 2) register in settings.json — create if missing, don't duplicate, don't clobber other hooks
 [ -f "$SETTINGS" ] || echo '{}' > "$SETTINGS"
 cp "$SETTINGS" "$SETTINGS.bak-$(date +%Y%m%d-%H%M%S)"
 jq --arg cmd "$HOOK_DST" '
@@ -40,17 +40,17 @@ jq --arg cmd "$HOOK_DST" '
   else .hooks.SessionStart += [ { "hooks": [ { "type": "command", "command": $cmd } ] } ]
   end
 ' "$SETTINGS" > "$SETTINGS.tmp" && mv "$SETTINGS.tmp" "$SETTINGS"
-jq empty "$SETTINGS" || { echo "✗ settings.json ficou inválido — restaure o .bak"; exit 1; }
-say "settings.json → hooks.SessionStart registrado (backup salvo)"
+jq empty "$SETTINGS" || { echo "x settings.json became invalid — restore the .bak"; exit 1; }
+say "settings.json -> hooks.SessionStart registered (backup saved)"
 
-# 3) protocolo no CLAUDE.md — append idempotente
+# 3) memory protocol in CLAUDE.md — idempotent append
 touch "$CLAUDE_MD"
-if grep -qF "## Memória — protocolo obrigatório" "$CLAUDE_MD"; then
-  say "CLAUDE.md → protocolo já presente (mantido)"
+if grep -qF "## Memory — required protocol" "$CLAUDE_MD"; then
+  say "CLAUDE.md -> protocol already present (kept)"
 else
   printf '\n' >> "$CLAUDE_MD"
   cat "$SCRIPT_DIR/memory-protocol.md" >> "$CLAUDE_MD"
-  say "CLAUDE.md → protocolo adicionado"
+  say "CLAUDE.md -> protocol added"
 fi
 
-echo "✓ pronto. Abra qualquer projeto com 'claude' e a pasta ./memory aparece sozinha."
+echo "OK done. Open any project with 'claude' and the ./memory folder appears on its own."

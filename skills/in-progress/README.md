@@ -1,19 +1,13 @@
-# 🚧 In Progress
+# In Progress
 
-Skills ainda em desenvolvimento — **rascunhos, não prontos para uso sério**. Espere arestas, mudanças bruscas e experimentos abandonados. Ficam versionados aqui, mas são **excluídos** do README principal e do plugin até graduarem para um bucket estável.
+Skills that are still being developed — not ready to use. Expect rough edges, breaking changes, and abandoned experiments. They're excluded from the top-level README and the plugin until they graduate to a stable bucket.
 
-## Constelação forge (em rework)
+Everything here is the **forge** constellation, under rework toward a single, genuinely useful version. Install the whole folder together (co-location), or the relative references break.
 
-A **forge-atelier** é uma *constelação*: um orquestrador auto-invocável + componentes explicit-only que ele **lê e aplica por caminho** (`read-and-apply, never copy`). Todas as peças vivem lado a lado aqui — mais os fontes únicos em [`_shared/`](_shared/). **Se for instalar, instale a pasta inteira junta** (co-location), senão as referências relativas quebram.
+- **[forge-atelier](./forge-atelier/SKILL.md)** — Orchestrator: forges a reusable skill out of an expert's own method. Auto-invoked.
+- **[forge-desmonte](./forge-desmonte/SKILL.md)** — Functional deconstruction of the method into parts, functions, and real dependencies (Movement I). Explicit-only.
+- **[forge-grill](./forge-grill/SKILL.md)** — One-question-at-a-time interrogation that pulls out the tacit method; also grills solo plans (Movement I). Explicit-only.
+- **[forge-otimizador](./forge-otimizador/SKILL.md)** — Karpathy-style self-optimization against the harness (Movement III; expensive, never fires on its own). Explicit-only.
+- **[forge-handoff](./forge-handoff/SKILL.md)** — Cross-session handoff and router that feeds real-use failures back into the forge. Explicit-only.
 
-> Esta família está em **remake**: o objetivo é unificá-la numa skill única que cumpra o propósito e resolva problemas reais. Enquanto isso não acontece, ela mora aqui.
-
-| Skill | Papel | Invocação |
-|---|---|---|
-| [⚒️ `forge-atelier/`](forge-atelier/) | Orquestrador — dono do chart, roda os Movimentos I+II, Construtor inline | **auto-invocável** (a única) |
-| [`forge-desmonte/`](forge-desmonte/) | Movimento I — desconstrução funcional do método | explicit-only (`/forge-desmonte`) |
-| [`forge-grill/`](forge-grill/) | Movimento I — interrogatório uma-pergunta-por-vez; também grelha planos solo | explicit-only (`/forge-grill`) |
-| [`forge-otimizador/`](forge-otimizador/) | Movimento III — auto-otimização estilo Karpathy (caro; nunca dispara sozinho) | explicit-only (`/forge-otimizador`) |
-| [`forge-handoff/`](forge-handoff/) | Handoff entre sessões + roteador de falhas de uso real de volta à forja | explicit-only (`/forge-handoff`) |
-
-**Fontes únicos** (referenciados, nunca copiados): [`_shared/`](_shared/) — o schema do chart (`chart-spec.md`) + os formatos. O manifesto de co-location é [`ATELIER-MAP.md`](ATELIER-MAP.md); a memória de design está em [`docs/architecture-blueprint.md`](docs/architecture-blueprint.md).
+Single sources (referenced, never copied): [`_shared/`](_shared/). Co-location manifest: [`ATELIER-MAP.md`](ATELIER-MAP.md).
