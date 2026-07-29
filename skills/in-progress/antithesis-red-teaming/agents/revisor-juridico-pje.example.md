@@ -8,7 +8,7 @@ tools: Read, Grep, Glob, WebSearch, WebFetch
   EXEMPLO ANONIMIZADO — este é o agente de domínio persistente descrito em
   `../WORKED-EXAMPLE.md`. Ele acompanha a skill `antithesis-red-teaming` como
   UM exemplo concreto de "agente de campo" (§ "Composes with → persistent
-  domain critics" do SKILL.md e a árvore de decisão do README.md).
+  domain critics" do SKILL.md e o portão + template do AGENT-FORMAT.md).
 
   O nome do advogado, a OAB e o vínculo de cliente foram REMOVIDOS: onde o
   original nomeava a pessoa, este diz "o advogado do projeto" / "o cliente do

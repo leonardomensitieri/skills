@@ -74,6 +74,6 @@ For exhaustive pre-ship audits, run this as a `/workflows` script instead of a o
 - **Crying wolf** → not recording verified non-bugs, so they resurface every round.
 
 ## Composes with
-- **Persistent domain critics**: for a recurring domain axis, register a standing agent (`.claude/agents/<domain>-reviewer.md`) primed with that expertise, and have the panel invoke it — cheaper than re-priming the domain every time. When to freeze one vs. spawn ad-hoc is the whole decision tree in `README.md`; a real, anonymized one ships in `agents/revisor-juridico-pje.example.md`.
+- **Persistent domain critics**: for a recurring domain axis, register a standing agent (`.claude/agents/<domain>-reviewer.md`) primed with that expertise, and have the panel invoke it — cheaper than re-priming the domain every time. When to freeze one (the gate) and how to shape it live in `AGENT-FORMAT.md`; a real, anonymized one ships in `agents/revisor-juridico-pje.example.md`.
 - **`/grill-me` / `/grill-with-docs`**: interactive human grilling. Complementary — use *antithesis* for an autonomous multi-lens attack, a grill for interactive Q&A with the user.
 - **`/code-review`**: a single-lens diff review — fine on its own for one-dimensional checks; *antithesis* is for multi-axis, premise-attacking review of plans/designs.
