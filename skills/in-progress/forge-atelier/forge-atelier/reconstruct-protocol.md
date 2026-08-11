@@ -10,7 +10,7 @@ This is the reassembly half of the forge; it draws on the skill-creator's recons
 
 Two principles, the second guarding the first.
 
-**Reconstruct for the executor, not as a transcript of the speaker.** A SKILL.md that faithfully transcribes how the expert *described* their steps reads, to an executing AI, as a pile of rules with no rationale — and a model given rules without reasons generalises badly. The chart holds what matters: each part's *function* and the *why* (from `FUNCTION-MAP.md` and `DECISIONS.md`). Preserve those. Write each instruction as its function and reason, in the true dependency order the Desmonte found — **not** the expert's habitual surface form. This is the same "function, not surface form" discipline as the Desmonte, now carried into the artifact: it is precisely what lets a generalist AI match or exceed the expert on cases the examples never showed. Collapse back to bare ordered steps and you have rebuilt the surface, and capped the skill below the expert.
+**Reconstruct for the executor, not as a transcript of the speaker.** A SKILL.md that faithfully transcribes how the expert *described* their steps reads, to an executing AI, as a pile of rules with no rationale — and a model given rules without reasons generalises badly. The chart holds what matters: each part's *function* and the *why* (from `FUNCTION-MAP.md` and the ADRs in `docs/adr/`). Preserve those. Write each instruction as its function and reason, in the true dependency order the Desmonte found — **not** the expert's habitual surface form. This is the same "function, not surface form" discipline as the Desmonte, now carried into the artifact: it is precisely what lets a generalist AI match or exceed the expert on cases the examples never showed. Collapse back to bare ordered steps and you have rebuilt the surface, and capped the skill below the expert.
 
 **The artifact is done when tests prove it, not when it reads well.** A SKILL.md can be elegant and still make the executor do the wrong thing. Readiness is a test result, not an impression.
 
@@ -34,7 +34,7 @@ In short: **measurement licenses divergence.** No trustworthy measurement → re
 
 ## Input — read the chart; do not re-interview, do not fabricate
 
-The input is the completed chart (schema → `../_shared/chart-spec.md`): `PROCESS-MAP.md`, `FUNCTION-MAP.md`, `KNOWLEDGE-MAP.md`, `INGREDIENTS.md` (if any), `LEXICON.md`, `DECISIONS.md`, `OUTCOME.md`. The content comes from there. Do **not** go back to the expert for method content — that was Movement I's job.
+The input is the completed chart (schema → `../_shared/chart-spec.md`): `PROCESS-MAP.md`, `FUNCTION-MAP.md`, `KNOWLEDGE-MAP.md`, `INGREDIENTS.md` (if any), `CONTEXT.md`, the ADRs (`docs/adr/`), `OUTCOME.md`. The content comes from there. Do **not** go back to the expert for method content — that was Movement I's job.
 
 If the chart has a hole — a part whose function is blank, a branch with no condition, a term never canonicalised — that is a signal Movement I was not finished. **Flag it back to extraction. Never paper over a gap by inventing the missing piece.** A fabricated instruction is worse than an admitted gap, because it ships looking authoritative.
 
@@ -43,10 +43,10 @@ If the chart has a hole — a part whose function is blank, a branch with no con
 Build it in three parts, for an AI executor, under progressive disclosure.
 
 - **The description (the trigger).** Decide the invocation mode: auto-invoked (the common case for a useful domain skill — a deliberately insistent description covering the implicit contexts where it should fire) or explicit. Default to auto-invoked with a strong description; the Otimizador tunes it later in Movement III.
-- **The body.** Each part as its *function and why*; the *true dependencies and branches* (not surface form); the canonical vocabulary from `LEXICON.md` embedded; rationale stated, because the model generalises better when it understands purpose. Shape the control structure per the OUTCOME (above).
+- **The body.** Each part as its *function and why*; the *true dependencies and branches* (not surface form); the canonical vocabulary from `CONTEXT.md` embedded; rationale stated, because the model generalises better when it understands purpose. Shape the control structure per the OUTCOME (above).
 - **Scripts and resources.** Where the Desmonte flagged *repeated deterministic work*, package it as a script so the executor does not reinvent it each run.
 
-**Progressive disclosure — three layers:** metadata (name + description) always in context; the body loaded when the skill triggers; heavy resources loaded only on demand. Embed the **Lexicon** as a resource the executor loads when it needs the vocabulary. The **Decision Records travel with the skill too, but as human-facing memory** — they document *why* the skill is shaped as it is for whoever edits it later; not runtime instructions.
+**Progressive disclosure — three layers:** metadata (name + description) always in context; the body loaded when the skill triggers; heavy resources loaded only on demand. Embed the **`CONTEXT.md` glossary** as a resource the executor loads when it needs the vocabulary. The **ADRs travel with the skill too, but as human-facing memory** — they document *why* the skill is shaped as it is for whoever edits it later; not runtime instructions.
 
 ## Validate — test, evaluate, iterate
 
@@ -56,7 +56,7 @@ Build it in three parts, for an AI executor, under progressive disclosure.
 
 ## Output — expose the eval harness, then hand off
 
-Produce the validated `SKILL.md` (+ scripts, + Lexicon and Decisions travelling along, per `../_shared/chart-spec.md`), and **expose the eval harness** (test prompts + assertions) in `forge-workspace/eval-harness/` as a public artifact — the socket Movement III consumes. Then write the handoff (apply `../forge-handoff/SKILL.md`): a prototype shipped, the chart referenced, the suggested next step recorded. Movement III is run later, explicitly, only when the skill has matured.
+Produce the validated `SKILL.md` (+ scripts, + the `CONTEXT.md` glossary and ADRs travelling along, per `../_shared/chart-spec.md`), and **expose the eval harness** (test prompts + assertions) in `forge-workspace/eval-harness/` as a public artifact — the socket Movement III consumes. Then write the handoff (apply `../forge-handoff/SKILL.md`): a prototype shipped, the chart referenced, the suggested next step recorded. Movement III is run later, explicitly, only when the skill has matured.
 
 ## When NOT to use this skill
 - There is no chart yet — the method has not been extracted. Do Movement I first.

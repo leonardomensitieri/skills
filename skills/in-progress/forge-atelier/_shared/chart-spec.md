@@ -11,19 +11,18 @@ forge-workspace/
 ├── FUNCTION-MAP.md     ← each part + its function + true dependencies (not the expert's surface form)
 ├── KNOWLEDGE-MAP.md    ← what is known vs. still missing (the ranked gaps)
 ├── INGREDIENTS.md      ← (lazy) typed expertise-ingredients, only if any surface — see INGREDIENTS-FORMAT.md
-├── LEXICON.md          ← canonical terms (grows by merge) — see LEXICON-FORMAT.md
-├── DECISIONS.md        ← append-only log of real trade-offs — see DECISIONS-FORMAT.md
+├── CONTEXT.md          ← canonical terms / the glossary (grows by merge) — per the /domain-modeling skill
+├── docs/adr/           ← ADRs: real trade-offs, one file each — per the /domain-modeling skill
 └── eval-harness/       ← (Movement II output) test prompts + assertions; the socket Movement III consumes
 ```
 
 ## The one discipline that governs the chart files
-**Create files lazily — only when there is something to record. Never scaffold an empty file.** Write `FUNCTION-MAP.md` once there is a first decomposition; create `LEXICON.md` when the first term is canonicalised; create `DECISIONS.md` when the first genuine trade-off crystallises; create `INGREDIENTS.md` only if a non-step ingredient actually surfaces (most simple methods surface none — that is correct).
+**Create files lazily — only when there is something to record. Never scaffold an empty file.** Write `FUNCTION-MAP.md` once there is a first decomposition; create `CONTEXT.md` when the first term is canonicalised; write an ADR under `docs/adr/` when the first genuine trade-off crystallises; create `INGREDIENTS.md` only if a non-step ingredient actually surfaces (most simple methods surface none — that is correct).
 
-## Per-file formats (each a single source in `_shared/`)
-- `FUNCTION-MAP.md` entries → `FUNCTION-MAP-FORMAT.md`
-- `LEXICON.md` entries → `LEXICON-FORMAT.md`
-- `DECISIONS.md` entries → `DECISIONS-FORMAT.md`
-- `INGREDIENTS.md` entries → `INGREDIENTS-FORMAT.md`
+## Per-file formats
+- `FUNCTION-MAP.md` entries → `FUNCTION-MAP-FORMAT.md` (single source in `_shared/`)
+- `INGREDIENTS.md` entries → `INGREDIENTS-FORMAT.md` (single source in `_shared/`)
+- `CONTEXT.md` (glossary) and `docs/adr/` (ADRs) → **owned by the `/domain-modeling` skill**; invoke it, do not redefine the format here
 
 ## What travels with a forged skill (its institutional memory)
-When Movement II ships the skill, three chart artifacts travel with it: the **Lexicon** (as a runtime resource the executor loads for vocabulary), the **Decisions** (as human-facing "why" for whoever edits it later — not runtime), and the **eval-harness** (exposed publicly; the socket the Otimizador and the return edge consume).
+When Movement II ships the skill, three chart artifacts travel with it: the **`CONTEXT.md` glossary** (as a runtime resource the executor loads for vocabulary), the **ADRs** (`docs/adr/` — human-facing "why" for whoever edits it later, not runtime), and the **eval-harness** (exposed publicly; the socket the Otimizador and the return edge consume).

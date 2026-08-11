@@ -63,7 +63,7 @@ Not every method needs the full ritual. With the expert, choose the path — and
 Extraction is a spiral, not a pipeline. Each turn:
 
 1. **Deconstruct what we have** — read and apply **`../forge-desmonte/SKILL.md`**. It rewrites `FUNCTION-MAP.md` — every part reduced to its *function* and *true dependencies*, not the expert's habitual surface form — captures any typed ingredients lazily (`INGREDIENTS.md`), and produces a **ranked list of gaps**.
-2. **Take the single biggest gap** and **interrogate only that** — read and apply **`../forge-grill/SKILL.md`**. One question at a time, recommended answer attached. The Grill sharpens terms into `LEXICON.md` and records genuine trade-offs in `DECISIONS.md`, inline.
+2. **Take the single biggest gap** and **interrogate only that** — read and apply **`../forge-grill/SKILL.md`**. One question at a time, recommended answer attached. The Grill sharpens terms into `CONTEXT.md` and records genuine trade-offs as ADRs in `docs/adr/`, inline.
 3. **Capture** the expert's answer, or the new artifact the question prompted, into the chart.
 4. **Re-deconstruct** with the new information. The map tightens; new, smaller gaps may surface. Turn again.
 
@@ -78,7 +78,7 @@ When the expert declares the extraction sufficient, Movement I closes and the ch
 
 ## Movement II — reconstruction (the Construtor, inline)
 
-Read and apply **`reconstruct-protocol.md`** (in this skill's folder). It synthesises the new `SKILL.md` *for an AI executor* — function and rationale rather than surface form, the Lexicon embedded, progressive disclosure, scripts where the deconstruction found repeated deterministic work, the control structure chosen per the OUTCOME (point-4) — then validates it against realistic test prompts, iterating until the tests prove it. **Fidelity is the floor, not the ceiling:** it may improve on the expert's habitual way only as far as a trustworthy signal confirms it. It exposes the **eval harness** (test prompts + assertions) as the public socket Movement III consumes.
+Read and apply **`reconstruct-protocol.md`** (in this skill's folder). It synthesises the new `SKILL.md` *for an AI executor* — function and rationale rather than surface form, the `CONTEXT.md` glossary embedded, progressive disclosure, scripts where the deconstruction found repeated deterministic work, the control structure chosen per the OUTCOME (point-4) — then validates it against realistic test prompts, iterating until the tests prove it. **Fidelity is the floor, not the ceiling:** it may improve on the expert's habitual way only as far as a trustworthy signal confirms it. It exposes the **eval harness** (test prompts + assertions) as the public socket Movement III consumes.
 
 ## The return edge — the skill is a prototype, not a finish line
 

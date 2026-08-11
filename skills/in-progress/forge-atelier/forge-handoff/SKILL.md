@@ -27,8 +27,8 @@ Saved **outside** the workspace (one level up from `forge-workspace/`, beside th
 - chart:        ./forge-workspace/
 - OUTCOME:      ./forge-workspace/OUTCOME.md
 - eval harness: ./forge-workspace/eval-harness/
-- Lexicon:      ./forge-workspace/LEXICON.md     (travels as runtime resource)
-- Decisions:    ./forge-workspace/DECISIONS.md   (travels as human "why")
+- Glossary:     ./forge-workspace/CONTEXT.md     (travels as runtime resource)
+- ADRs:         ./forge-workspace/docs/adr/      (travel as human "why")
 
 ## Suggested next skill
 <one of:>

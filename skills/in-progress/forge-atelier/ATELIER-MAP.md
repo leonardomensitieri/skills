@@ -16,8 +16,7 @@ This bundle is **one install unit**. The orchestrator and components reference e
 |---|---|
 | `_shared/chart-spec.md` | the `forge-workspace/` schema (the chart) |
 | `_shared/FUNCTION-MAP-FORMAT.md` | the part-entry format |
-| `_shared/LEXICON-FORMAT.md` | the Lexicon entry format |
-| `_shared/DECISIONS-FORMAT.md` | the Decisions entry format |
+| (CONTEXT glossary + ADRs) | owned by the `/domain-modeling` skill — invoked, not vendored here |
 | `_shared/INGREDIENTS-FORMAT.md` | the typed-ingredient format (point 4, lazy) |
 | `_shared/activation-seams.md` | the detect-and-ask policy |
 
