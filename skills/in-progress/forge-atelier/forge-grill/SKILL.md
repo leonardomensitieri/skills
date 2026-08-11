@@ -1,26 +1,24 @@
 ---
 name: forge-grill
-description: Relentless one-question-at-a-time interrogation that drags tacit method out of an expert into explicit, reproducible form — sharpening vocabulary and logging real trade-offs as they surface. A Movement I component of forge-atelier; also usable standalone to stress-test your own plan against your material and documented decisions. Invoke explicitly (/forge-grill).
+description: Relentless one-question-at-a-time interrogation that drags tacit method out of an expert into explicit, reproducible form — sharpening vocabulary and logging real trade-offs as they surface. A Movement I component of forge-atelier; runs on the base `grilling` discipline. Also usable standalone to stress-test your own plan against your material and documented decisions. Invoke explicitly (/forge-grill).
 when_to_use: When a method is partly in the expert's head and the material can't resolve a gap — you need adversarial, scenario-driven questioning to make tacit decision rules explicit. Used inside the forge spiral (one gap per turn), or standalone to grill a plan against existing docs/code (the original grill-with-docs use).
 disable-model-invocation: true
 user-invocable: true
 ---
 
-> Movement I component of **forge-atelier** (the interrogation co-routine). This file is the **single source** of the Grill protocol — the orchestrator reads and applies it; never copied. Shared sources, read by path: chart → `../_shared/chart-spec.md`; Lexicon format → `../_shared/LEXICON-FORMAT.md`; Decisions format + when-to-record → `../_shared/DECISIONS-FORMAT.md`.
+> Movement I component of **forge-atelier** (the interrogation co-routine). It **runs on the base `grilling` skill** — a sibling skill outside this bundle (read by path → `../../grilling/SKILL.md`) — and specialises it for one job: dragging an expert's tacit method into explicit form. This file is the **single source** of that specialisation — the orchestrator reads and applies it; never copied. Shared sources, read by path: chart → `../_shared/chart-spec.md`; Lexicon format → `../_shared/LEXICON-FORMAT.md`; Decisions format + when-to-record → `../_shared/DECISIONS-FORMAT.md`.
 
 # Grill — tacit-method extraction by relentless interrogation
 
-This adapts the grilling discipline from stress-testing *code* to extracting an *expert's method*. The "codebase" becomes the **material the expert has provided** (files, worked examples, transcripts, prior artifacts) plus the **maps already built** about their method. The job is to drag what the expert *knows how to do* but *cannot easily say* into explicit, reproducible form.
+Apply the **`grilling`** discipline — relentless, **one question at a time**, walking each branch of the decision tree and proposing a recommended answer for each — but aimed not at a code plan and instead at an **expert's method**. The "codebase" becomes the **material the expert has provided** (files, worked examples, transcripts, prior artifacts) plus the **maps already built** about their method. The job is to drag what the expert *knows how to do* but *cannot easily say* into explicit, reproducible form.
 
-It exists to neutralise one specific failure: the expert who "dumps" text and expects a working skill. Tacit knowledge does not surrender to a single open question — it surrenders to adversarial, one-at-a-time questioning guided by concrete scenarios. That is the whole engine here.
+It exists to neutralise one specific failure: the expert who "dumps" text and expects a working skill. Tacit knowledge does not surrender to a single open question — it surrenders to adversarial, one-at-a-time questioning guided by concrete scenarios. That is the whole point.
 
 **Conduct the interrogation in the expert's own language** (the language they are writing to you in). This body is in English for robustness; the dialogue is not.
 
-## The core loop
+## What this adds on top of `grilling`
 
-Interrogate the expert relentlessly about every aspect of their method until you reach a shared, explicit understanding. Walk down each branch of the method's decision tree, resolving dependencies between decisions one by one. **For each question, propose your recommended answer** — never ask a bare question; ask a question with your best guess attached, so the expert is correcting rather than composing from scratch.
-
-Ask **one question at a time**, and wait for the answer before continuing. A wall of ten questions makes the expert skim; one sharp question gets a precise answer.
+The base loop lives in **`grilling`** — interrogate relentlessly, **one question at a time**, propose a recommended answer, look facts up yourself while the *decisions* stay the expert's, and never act until there is shared understanding. **Do not restate it here.** What follows is only the specialisation for method extraction.
 
 ### The cheap-first rule — this is what keeps the session from being a burden
 
