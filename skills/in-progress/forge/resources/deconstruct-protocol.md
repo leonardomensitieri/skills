@@ -10,17 +10,17 @@ The failure this prevents: a skill that mirrors the *order the expert happens to
 
 ## The procedure
 
-Run against the material + `PROCESS-MAP.md` + answers already captured by the Grill.
+Run against the material the expert provided + the current `STEP-FUNCTION-MAP.md` + answers already captured by the Grill.
 
 1. **Disassemble into discrete steps.** Split what's secretly two; merge what's artificially divided.
 2. **Determine each step's function.** What it accomplishes, why it exists, what breaks downstream without it, what it consumes/produces, what must precede it.
 3. **Build the dependency graph, not a list.** Surface branches, gates, loops. Separate *true* ordering (B needs A's output) from *habitual* ordering (the expert just does A first).
 4. **Attempt reconstruction.** Could a non-expert rebuild the method from this map alone? Walk it against the expert's examples.
-5. **Where reconstruction fails, that's a gap.** Unclear function, unresolved dependency, input from nowhere, unstated branch condition — mark them, biggest first.
+5. **Where reconstruction fails, that's a gap.** Unclear function, unresolved dependency, input from nowhere, unstated branch condition — write each to `KNOWLEDGE-MAP.md`, biggest first (`G<N>: <what won't resolve from the material> — why it blocks reconstruction`).
 
 ## Boundary with the Grill
 
-The Desmonte **analyses and flags; it does not ask** — that's the Grill's job. Exhaust the material first (cheap-first, from the other side). When the material genuinely can't resolve something, mark it a gap and let the spiral route it. Each turn: Desmonte → `STEP-FUNCTION-MAP.md` + ranked gaps → Grill drills the biggest → Desmonte runs again, tighter.
+The Desmonte **analyses and flags; it does not ask** — that's the Grill's job. Exhaust the material first (cheap-first, from the other side). When the material genuinely can't resolve something, write it as a gap in `KNOWLEDGE-MAP.md` and let the spiral route it. Each turn: Desmonte → tighter `STEP-FUNCTION-MAP.md` + ranked gaps in `KNOWLEDGE-MAP.md` → Grill drills the biggest → Desmonte runs again.
 
 ## Format — `STEP-FUNCTION-MAP.md`
 
@@ -32,9 +32,6 @@ The Desmonte **analyses and flags; it does not ask** — that's the Grill's job.
 **Depends on:** <true constraints only>
 **Branches:** <conditions that change what's next>
 **Surface ≠ function:** <where habitual order is NOT a real dependency>
-
-## Open gaps (to the Grill, biggest first)
-- G<N>: <what won't resolve from the material> — why it blocks reconstruction
 ```
 
 ## When NOT to use
